@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--第二节所用Bean-->
+    <bean id="scope" class="com.neusoft.ssm.section2.Scope"/>
+    <bean id="scope2" class="com.neusoft.ssm.section2.Scope" scope="prototype"/>
+
+    <!--第三节所用Bean-->
+    <!--构造方法注入-->
+    <bean id="user1" class="com.neusoft.ssm.section3.XMLInjection.User">
+        <constructor-arg index="0" value="蒋政权"/>
+        <constructor-arg index="1" value="蒋政权牛逼密码"/>
+        <constructor-arg index="2">
+            <list>
+                <value>蒋政权列表1</value>
+                <value>蒋政权列表2</value>
+                <value>蒋政权列表3</value>
+                <value>蒋政权列表4</value>
+                <value>蒋政权列表5</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <!--Setter方法注入-->
+    <bean id="user2" class="com.neusoft.ssm.section3.XMLInjection.User">
+        <property name="userName" value="张三"/>
+        <property name="password" value="张三密码"/>
+        <property name="list">
+            <list>
+                <value>张三列表1</value>
+                <value>张三列表2</value>
+                <value>张三列表3</value>
+                <value>张三列表4</value>
+                <value>张三列表5</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>

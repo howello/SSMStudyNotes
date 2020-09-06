@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neusoft.ssm.mapper.UserMapper">
+    <select id="findUserById" parameterType="Integer" resultType="com.neusoft.ssm.POJO.User">
+        select * from user where id=#{id}
+    </select>
+
+    <select id="findUserByName" parameterType="String" resultType="com.neusoft.ssm.POJO.User">
+        select * from user where username like '%${value}%'
+    </select>
+
+    <insert id="addUser" parameterType="com.neusoft.ssm.POJO.User">
+        insert into user(username,password,job,phone) values (#{username},#{password},#{job},#{phone})
+    </insert>
+
+    <update id="updateUser" parameterType="com.neusoft.ssm.POJO.User">
+        update user set username=#{username},password=#{password},job=#{job},phone=#{phone} where id=#{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="String">
+        delete from user where username like '%${username}%'
+    </delete>
+
+    <!--    动态SQL-->
+    <select id="findByJobAndName" parameterType="com.neusoft.ssm.POJO.User" resultType="com.neusoft.ssm.POJO.User">
+        select * from user where 1=1
+        <if test="username !=null and username !=''">
+            and username like concat('%',#{username},'%')
+        </if>
+        <if test="job !=null and job !=''">
+            and job like concat('%',#{job},'%')
+        </if>
+    </select>
+
+    <select id="findByNameOrJob" parameterType="com.neusoft.ssm.POJO.User" resultType="com.neusoft.ssm.POJO.User">
+        select * from user where 1=1
+        <choose>
+            <when test="username!=null and username !=''">
+                and username like concat('%',#{username},'%')
+            </when>
+            <when test="job!=null and username!=''">
+                and job like concat('%',#{job},'%')
+            </when>
+            <otherwise>
+                and phone is null
+            </otherwise>
+        </choose>
+    </select>
+
+    <update id="updateUserOne" parameterType="com.neusoft.ssm.POJO.User">
+        update user
+        <set>
+            <if test="username!=null and username!=''">
+                username=#{username}
+            </if>
+            <if test="password!=null and password!=''">
+                password=#{password}
+            </if>
+            <if test="jf!=null">
+                jf=#{jf}
+            </if>
+            <if test="job!=null and job!=''">
+                job=#{job}
+            </if>
+            <if test="phone!=null and phone!=''">
+                phone=#{phone}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+</mapper>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties"/>
+    <settings>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
+    <!--配置环境，默认环境id为mysql-->
+    <environments default="mysql">
+        <!--1.2 配置环境为mysql的数据库环境-->
+        <environment id="mysql">
+            <!--使用JDBC事务管理-->
+            <transactionManager type="JDBC"/>
+            <!--数据库连接池-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--2. 配置Mapper位置-->
+    <mappers>
+        <!--        使用类路劲引入-->
+        <mapper resource="com/neusoft/ssm/mapper/StudentMapper.xml"/>
+        <mapper resource="com/neusoft/ssm/mapper/StudentCardMapper.xml"/>
+        <mapper resource="com/neusoft/ssm/mapper/BanjiMapper.xml"/>
+        <mapper resource="com/neusoft/ssm/mapper/CourseMapper.xml"/>
+    </mappers>
+</configuration>

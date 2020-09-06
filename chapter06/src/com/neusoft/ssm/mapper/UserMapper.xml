@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neusoft.ssm.mapper.UserMapper">
+    <select id="findUserById" parameterType="Integer" resultType="com.neusoft.ssm.POJO.User">
+        select * from user where id=#{id}
+    </select>
+
+    <select id="findUserByName" parameterType="String" resultType="com.neusoft.ssm.POJO.User">
+        select * from user where username like '%${value}%'
+    </select>
+
+    <insert id="addUser" parameterType="com.neusoft.ssm.POJO.User">
+        insert into user(username,password,job,phone) values (#{username},#{password},#{job},#{phone})
+    </insert>
+
+    <update id="updateUser" parameterType="com.neusoft.ssm.POJO.User">
+        update user set username=#{username},password=#{password},job=#{job},phone=#{phone} where id=#{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="String">
+        delete from user where username like '%${username}%'
+    </delete>
+
+</mapper>
