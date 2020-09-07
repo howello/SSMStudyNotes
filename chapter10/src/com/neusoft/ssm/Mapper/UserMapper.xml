@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.ssm.Mapper.UserMapper">
+    <!--根据用户编号获取用户信息-->
+    <select id="findUserById" parameterType="Integer" resultType="com.neusoft.ssm.POJO.User">
+        select * from tb_user where id=#{id};
+    </select>
+</mapper>
