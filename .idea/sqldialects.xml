@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/chapter06/src/com/neusoft/ssm/mapper/UserMapper.xml" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/chapter08/src/com/neusoft/ssm/mapper/UserMapper.xml" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/chapter09/src/com/neusoft/ssm/mapper/BanjiMapper.xml" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/chapter09/src/com/neusoft/ssm/mapper/CourseMapper.xml" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/chapter09/src/com/neusoft/ssm/mapper/StudentCardMapper.xml" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/chapter09/src/com/neusoft/ssm/mapper/StudentMapper.xml" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/chapter10/src/com/neusoft/ssm/Mapper/UserMapper.xml" dialect="GenericSQL" />
+  </component>
+</project>
